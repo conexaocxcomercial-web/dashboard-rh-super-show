@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { LogoRhEstrategico, LogoConexao, SimboloCx } from "./Marca";
+import { LogoRhEstrategico, LogoConexao } from "./Marca";
 
 export const PAGINAS = [
   { href: "/visao-geral",       curto: "Visão",        longo: "Visão geral" },
@@ -90,7 +90,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             <BotaoTema />
           </div>
           <div>
-            <p className="text-[0.6rem] text-[var(--muted)] mb-1.5">consultoria de</p>
+            <p className="text-[0.6rem] text-[var(--muted)] mb-1.5">feito com</p>
             <LogoConexao titulo="conexão.cx" className="w-[92px] text-[var(--ink)] opacity-70" />
           </div>
         </div>
@@ -98,17 +98,14 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
       {/* Barra superior — celular e tablet */}
       <header className="lg:hidden sticky top-0 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <SimboloCx titulo="conexão.cx" className="w-6 text-[var(--marca)]" />
-          <LogoRhEstrategico titulo="RH estratégico" className="w-[128px] text-[var(--ink)]" />
-        </div>
+        <LogoRhEstrategico titulo="RH estratégico" className="w-[150px] text-[var(--ink)]" />
         <BotaoTema />
       </header>
 
       <main className="flex-1 p-4 sm:p-6 lg:p-7 pb-24 lg:pb-7 max-w-[1600px] w-full">
         {children}
         <footer className="lg:hidden mt-8 pt-4 border-t border-[var(--line)] flex items-center gap-2">
-          <span className="text-[0.62rem] text-[var(--muted)]">consultoria de</span>
+          <span className="text-[0.62rem] text-[var(--muted)]">feito com</span>
           <LogoConexao titulo="conexão.cx" className="w-[80px] text-[var(--ink)] opacity-70" />
         </footer>
       </main>

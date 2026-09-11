@@ -46,6 +46,27 @@ e ajuste o `aspectRatio` correspondente em `components/Marca.tsx`.
 | `conexao-cx.png` | assinatura no rodapé |
 | `simbolo-cx.png` | barra do celular, marca-d'água dos destaques, favicon |
 
+## Filtros
+
+O estado dos filtros fica na **URL** (`?unidade=Felipe+Camarão&de=5&ate=8&faixa=8%2B`),
+não em memória. Assim o link já carrega a visão filtrada e pode ser enviado ao cliente,
+o botão voltar do navegador funciona, e os dados permanecem no servidor.
+
+| Página | Filtros disponíveis |
+|---|---|
+| Visão geral | período (mês a mês), unidade |
+| Absenteísmo | departamento |
+| Saúde ocupacional | período, unidade, tipo, faixa de duração |
+| Turnover | período |
+| Desligamentos | período, tipo de saída, motivo |
+
+A página de Absenteísmo aceita **apenas** departamento: o relatório de ponto é um total
+acumulado do período, sem data e sem unidade na origem. Filtrar por mês ali produziria
+um número que a fonte não sustenta.
+
+As faixas de duração (1 dia · 2–3 · 4–7 · 8 dias ou mais) separam afastamento pontual de
+afastamento prolongado, que exigem respostas de RH diferentes.
+
 ## Temas
 
 Claro e escuro, alternados pelo botão no rodapé da navegação.
