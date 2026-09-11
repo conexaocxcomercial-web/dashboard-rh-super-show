@@ -3,8 +3,9 @@ import "./globals.css";
 import Shell from "@/components/Shell";
 
 export const metadata: Metadata = {
-  title: "Painel de RH — Cidade das Rosas",
-  description: "Indicadores de pessoal, absenteísmo e turnover",
+  title: "RH estratégico — Cidade das Rosas",
+  description: "Painel de indicadores de pessoal, absenteísmo e turnover. Uma entrega conexão.cx.",
+  icons: { icon: "/icon.png" },
 };
 
 export const viewport: Viewport = {

@@ -1,6 +1,7 @@
-# Painel de RH — Cidade das Rosas
+# RH estratégico — Cidade das Rosas
 
-Dashboard de indicadores de pessoal, absenteísmo e turnover.
+Painel de indicadores de pessoal, absenteísmo e turnover.
+Apoio ao serviço **RH estratégico**, da conexão.cx.
 Next.js 14 (App Router) · TypeScript · Tailwind · Recharts.
 
 ## Rodar localmente
@@ -28,6 +29,22 @@ lib/metrics.ts        todas as regras de cálculo, num lugar só
 lib/types.ts          formato das tabelas
 data/dados.json       dados atuais, extraídos da planilha normalizada
 ```
+
+## Marca
+
+Os logos ficam em `public/` e são aplicados como **máscara CSS** pelo componente
+`components/Marca.tsx`. O PNG define apenas o recorte; a cor vem do tema via `bg-current`.
+Por isso um único arquivo serve para o tema claro, o escuro e versões tingidas —
+não é preciso manter as versões positiva e negativa separadas.
+
+Para trocar um logo, substitua o PNG em `public/` mantendo fundo transparente,
+e ajuste o `aspectRatio` correspondente em `components/Marca.tsx`.
+
+| Arquivo | Onde aparece |
+|---|---|
+| `rh-estrategico.png` | topo da navegação e barra superior no celular |
+| `conexao-cx.png` | assinatura no rodapé |
+| `simbolo-cx.png` | barra do celular, marca-d'água dos destaques, favicon |
 
 ## Temas
 

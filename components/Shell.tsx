@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { LogoRhEstrategico, LogoConexao, SimboloCx } from "./Marca";
 
 export const PAGINAS = [
   { href: "/visao-geral",       curto: "Visão",        longo: "Visão geral" },
@@ -58,11 +59,8 @@ export default function Shell({ children }: { children: React.ReactNode }) {
       {/* Navegação lateral — desktop e TV */}
       <nav className="hidden lg:flex lg:flex-col lg:w-52 xl:w-56 shrink-0 border-r border-[var(--line)] bg-[var(--surface)] p-4">
         <div className="mb-7">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--marca)]" />
-            <span className="font-semibold text-sm tracking-tight">Painel de RH</span>
-          </div>
-          <p className="text-[0.68rem] text-[var(--muted)] mt-1 ml-4.5">Cidade das Rosas</p>
+          <LogoRhEstrategico titulo="RH estratégico" className="w-full max-w-[168px] text-[var(--ink)]" />
+          <p className="text-[0.68rem] text-[var(--muted)] mt-2.5">Cidade das Rosas</p>
         </div>
 
         <ul className="space-y-0.5 flex-1">
@@ -86,22 +84,34 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           })}
         </ul>
 
-        <div className="pt-3 border-t border-[var(--line)] flex items-center justify-between">
-          <span className="text-[0.68rem] text-[var(--muted)]">jan–ago 2026</span>
-          <BotaoTema />
+        <div className="pt-3 border-t border-[var(--line)] space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[0.68rem] text-[var(--muted)]">jan–ago 2026</span>
+            <BotaoTema />
+          </div>
+          <div>
+            <p className="text-[0.6rem] text-[var(--muted)] mb-1.5">consultoria de</p>
+            <LogoConexao titulo="conexão.cx" className="w-[92px] text-[var(--ink)] opacity-70" />
+          </div>
         </div>
       </nav>
 
       {/* Barra superior — celular e tablet */}
       <header className="lg:hidden sticky top-0 z-20 bg-[var(--surface)] border-b border-[var(--line)] px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[var(--marca)]" />
-          <span className="font-semibold text-sm">Painel de RH</span>
+        <div className="flex items-center gap-2.5">
+          <SimboloCx titulo="conexão.cx" className="w-6 text-[var(--marca)]" />
+          <LogoRhEstrategico titulo="RH estratégico" className="w-[128px] text-[var(--ink)]" />
         </div>
         <BotaoTema />
       </header>
 
-      <main className="flex-1 p-4 sm:p-6 lg:p-7 pb-24 lg:pb-7 max-w-[1600px] w-full">{children}</main>
+      <main className="flex-1 p-4 sm:p-6 lg:p-7 pb-24 lg:pb-7 max-w-[1600px] w-full">
+        {children}
+        <footer className="lg:hidden mt-8 pt-4 border-t border-[var(--line)] flex items-center gap-2">
+          <span className="text-[0.62rem] text-[var(--muted)]">consultoria de</span>
+          <LogoConexao titulo="conexão.cx" className="w-[80px] text-[var(--ink)] opacity-70" />
+        </footer>
+      </main>
 
       {/* Abas inferiores — celular e tablet */}
       <nav className="lg:hidden fixed bottom-0 inset-x-0 z-20 bg-[var(--surface)] border-t border-[var(--line)] grid grid-cols-5">

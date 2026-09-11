@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { SimboloCx } from "./Marca";
 
 type Tom = "neutro" | "marca" | "alerta" | "positivo";
 
@@ -49,9 +50,15 @@ export function Alerta({
 
 export function Destaques({ itens }: { itens: { titulo: string; texto: string }[] }) {
   return (
-    <section className="rounded-xl p-4 bg-[var(--tint-marca)] border border-[var(--marca)]/25">
-      <h2 className="text-sm font-semibold text-[var(--marca)] mb-2">Destaques do período</h2>
-      <ul className="space-y-2">
+    <section className="relative overflow-hidden rounded-xl p-4 bg-[var(--tint-marca)] border border-[var(--marca)]/25">
+      {/* O sorriso da marca como marca-d'água: é aqui que a consultoria comenta
+          os números, então faz sentido assinar o bloco. */}
+      <SimboloCx
+        titulo=""
+        className="pointer-events-none absolute -right-5 -bottom-6 w-36 text-[var(--marca)] opacity-[0.07]"
+      />
+      <h2 className="relative text-sm font-semibold text-[var(--marca)] mb-2">Destaques do período</h2>
+      <ul className="relative space-y-2">
         {itens.map((i) => (
           <li key={i.titulo} className="text-[0.8rem] leading-relaxed text-[var(--ink)]">
             <span className="font-semibold">{i.titulo}</span> {i.texto}
