@@ -23,11 +23,10 @@ export default function Login() {
         <div className="relative flex-1 flex items-center mt-10 lg:mt-0">
           <div className="max-w-md">
             <p className="text-xl lg:text-3xl font-semibold leading-[1.15] tracking-tight">
-              Os números de gente da sua operação, atualizados e prontos para decidir.
+              Gestão de pessoas orientada a dados.
             </p>
             <p className="text-sm lg:text-base mt-4 text-white/75 leading-relaxed">
-              Painel de acompanhamento do RH estratégico, a consultoria mensalista
-              que atua como business partner do seu negócio.
+              Quadro, absenteísmo, turnover e desligamentos em um único painel.
             </p>
           </div>
         </div>
@@ -37,8 +36,10 @@ export default function Login() {
       <main className="flex items-center justify-center px-6 py-12 lg:py-14 bg-[var(--bg)]">
         <div className="w-full max-w-sm">
           <h1 className="text-2xl font-semibold tracking-tight">Acessar o painel</h1>
+          {/* Evita descrever como o acesso funciona: a tela de login não deve
+              dar pistas para quem chegou aqui sem ser convidado. */}
           <p className="text-sm text-[var(--muted)] mt-1.5 mb-7">
-            Informe a senha compartilhada com a diretoria.
+            Acesso restrito. Informe sua senha para continuar.
           </p>
 
           <Suspense fallback={null}>
