@@ -89,6 +89,14 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             <span className="text-[0.68rem] text-[var(--muted)]">jan–ago 2026</span>
             <BotaoTema />
           </div>
+          <form action="/api/sair" method="post">
+            <button
+              type="submit"
+              className="text-[0.72rem] text-[var(--muted)] hover:text-[var(--magenta)] transition-colors"
+            >
+              Sair do painel
+            </button>
+          </form>
           <div>
             <p className="text-[0.6rem] text-[var(--muted)] mb-1.5">feito com</p>
             <LogoConexao titulo="conexão.cx" className="w-[92px] text-[var(--ink)] opacity-70" />
@@ -104,9 +112,14 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
       <main className="flex-1 p-4 sm:p-6 lg:p-7 pb-24 lg:pb-7 max-w-[1600px] w-full">
         {children}
-        <footer className="lg:hidden mt-8 pt-4 border-t border-[var(--line)] flex items-center gap-2">
-          <span className="text-[0.62rem] text-[var(--muted)]">feito com</span>
-          <LogoConexao titulo="conexão.cx" className="w-[80px] text-[var(--ink)] opacity-70" />
+        <footer className="lg:hidden mt-8 pt-4 border-t border-[var(--line)] flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <span className="text-[0.62rem] text-[var(--muted)]">feito com</span>
+            <LogoConexao titulo="conexão.cx" className="w-[80px] text-[var(--ink)] opacity-70" />
+          </div>
+          <form action="/api/sair" method="post">
+            <button type="submit" className="text-[0.7rem] text-[var(--muted)]">Sair</button>
+          </form>
         </footer>
       </main>
 

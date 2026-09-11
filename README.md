@@ -12,11 +12,28 @@ npm run dev
 ```
 Abre em http://localhost:3000
 
+## Variáveis de ambiente (obrigatórias)
+
+Copie `.env.example` para `.env.local` e preencha:
+
+```
+SENHA_ACESSO=...      # senha única compartilhada com a diretoria
+SEGREDO_SESSAO=...    # gere com: openssl rand -base64 32
+```
+
+Sem essas duas variáveis o app responde 500 de propósito, em vez de subir desprotegido.
+
 ## Publicar na Vercel
 
-1. Suba este repositório no GitHub.
-2. Em vercel.com: **New Project** → importe o repositório → **Deploy**.
-   Nenhuma variável de ambiente é necessária nesta etapa.
+1. Suba este repositório no GitHub. O `.gitignore` já exclui `.env.local` —
+   a senha nunca vai para o repositório.
+2. Em vercel.com: **New Project** → importe o repositório.
+3. Em **Environment Variables**, cadastre `SENHA_ACESSO` e `SEGREDO_SESSAO`.
+4. **Deploy**.
+
+Para trocar a senha depois, altere a variável na Vercel e refaça o deploy.
+Todas as sessões abertas continuam válidas até expirarem; para derrubá-las
+na hora, troque também o `SEGREDO_SESSAO`.
 
 ## Estrutura
 
@@ -45,6 +62,23 @@ e ajuste o `aspectRatio` correspondente em `components/Marca.tsx`.
 | `rh-estrategico.png` | topo da navegação e barra superior no celular |
 | `conexao-cx.png` | assinatura no rodapé |
 | `simbolo-cx.png` | barra do celular, marca-d'água dos destaques, favicon |
+
+## Acesso
+
+Senha única compartilhada, validada **no servidor**. O navegador nunca recebe a senha,
+e o cookie de sessão é `httpOnly` — o JavaScript da página não consegue lê-lo.
+
+- `middleware.ts` bloqueia toda página antes de renderizar: sem sessão válida,
+  nenhum dado chega ao navegador.
+- O cookie guarda apenas a data de expiração e uma assinatura HMAC-SHA256.
+  Adulterar o valor invalida a assinatura e derruba a sessão.
+- Senha e assinatura são comparadas em tempo constante, para que a duração da
+  resposta não revele quantos caracteres estavam corretos.
+- Cada tentativa tem atraso fixo de 600 ms, encarecendo força bruta.
+- A sessão dura 7 dias. O botão **Sair** fica no rodapé da navegação.
+
+Ao tentar abrir uma página protegida sem sessão, o destino é guardado na URL
+e o usuário volta para ele após entrar.
 
 ## Filtros
 

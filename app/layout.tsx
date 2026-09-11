@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import Shell from "@/components/Shell";
 
 export const metadata: Metadata = {
   title: "RH estratégico — Cidade das Rosas",
-  description: "Painel de indicadores de pessoal, absenteísmo e turnover. Uma entrega conexão.cx.",
+  description: "Painel de indicadores de pessoal, absenteísmo e turnover. Feito com conexão.cx.",
   icons: { icon: "/icon.png" },
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
@@ -30,9 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: scriptTema }} /></head>
-      <body>
-        <Shell>{children}</Shell>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
